@@ -5,13 +5,27 @@
  */
 package kata3_rgs;
 
+import java.util.HashMap;
+
 /**
  *
  * @author Admin
  */
 public class Kata3_rgs {
     public static void main(String[] args) {
-        HistogramDisplay histo = new HistogramDisplay();
+        Histogram<String> histogram = new Histogram<String>();
+        histogram.increment("gmail.com");
+        histogram.increment("gmail.com");
+        histogram.increment("gmail.com");
+        histogram.increment("gmail.com");
+        histogram.increment("ulpgc.com");
+        histogram.increment("ulpgc.com");
+        histogram.increment("ulpgc.com");
+        histogram.increment("ulpgc.com");
+        histogram.increment("ulpgc.com");
+        histogram.increment("alu.ulpgc.com");
+        
+        HistogramDisplay histo = new HistogramDisplay(histogram);
         histo.execute();
     }
 }

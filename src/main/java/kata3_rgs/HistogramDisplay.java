@@ -7,6 +7,7 @@ package kata3_rgs;
 
 import java.awt.Container;
 import java.awt.Dimension;
+import java.util.HashMap;
 import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -20,27 +21,15 @@ import org.jfree.ui.ApplicationFrame;
  * @author Admin
  */
 public class HistogramDisplay extends ApplicationFrame {
+    private final  Histogram<String> histogram;
     
-    public HistogramDisplay(String title) {
-        super("HISTOGRAMA");
-    }
 
-    HistogramDisplay() {
+    public HistogramDisplay(Histogram<String> histogram) {
         super("HISTOGRAMA");
+        this.histogram = histogram;
         this.setContentPane(createPanel());
         this.pack();
         
-    }
-    
-
-    @Override
-    public void setContentPane(Container x) {
-        super.setContentPane(createPanel()); //To change body of generated methods, choose Tools | Templates.
-    }
- 
-    @Override
-    public void pack() {
-        super.pack(); //To change body of generated methods, choose Tools | Templates.
     }
     
     public void execute(){
@@ -55,9 +44,9 @@ public class HistogramDisplay extends ApplicationFrame {
     
     private DefaultCategoryDataset createDataset(){
         DefaultCategoryDataset dataSet = new DefaultCategoryDataset();
-        dataSet.addValue(30, "", "ulpgc.es");
-        dataSet.addValue(10, "", "gmail.es");
-        dataSet.addValue(20, "", "alu.ulpgc.es");
+        for (String key : this.histogram.keySet()) {
+            dataSet.addValue(this.histogram.get(key),"",key);
+        }
         return dataSet;
     }
     
