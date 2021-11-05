@@ -11,6 +11,7 @@ package kata3_rgs;
  */
 public class Kata3_rgs {
     public static void main(String[] args) {
-            
+        HistogramDisplay histo = new HistogramDisplay();
+        histo.execute();
     }
 }
